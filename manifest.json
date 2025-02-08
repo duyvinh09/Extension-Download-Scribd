@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Scribd PDF Downloader",
+  "version": "1.0",
+  "description": "Mở và đọc nội dung của Scribd | Hỗ trợ tải xuống miễn phí",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": ["tabs", "scripting", "activeTab"],
+  "host_permissions": ["https://www.scribd.com/document/*"],
+  "background": {
+    "service_worker": "js/openNewTab.js"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.scribd.com/embeds/*/content"],
+      "js": ["js/deleteContent.js"]
+    }
+  ]
+}
